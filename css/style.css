@@ -1,0 +1,51 @@
+#wrapp {
+  position: relative;
+  height: 30rem;
+  border: 1px solid gray;
+  border-radius: 0.3125rem;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 50% - 3.25rem;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 6.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.scoreboard {
+  height: 25rem;
+  border-bottom: 1px solid gray;
+}
+
+#players {
+  height: 100%;
+}
+
+.player1Place + .player2Place {
+  border-left: 1px solid gray;
+}
+
+.player-score {
+  font-size: 3.5rem;
+}
+
+[disabled] {
+  cursor: no-drop;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
