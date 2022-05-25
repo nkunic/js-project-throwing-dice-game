@@ -11,12 +11,15 @@ var startBtn = document.getElementById('startBtn');
 // Circle
 var circleRound = document.getElementsByClassName('circle-round')[0];
 
+// Scoreboard
+var scoreboard = document.getElementsByClassName('scoreboard')[0];
+
 // Players
 var players = document.getElementById('players');
 var player1Place = document.getElementsByClassName('player1Place')[0];
 var player2Place = document.getElementsByClassName('player2Place')[0];
-var player1 = '';
-var player2 = '';
+var player1NameValue = '';
+var player2NameValue = '';
 
 var container = document.getElementsByClassName('container')[0];
 
@@ -41,65 +44,30 @@ var rollingCounter = 1;
 // Start again button
 var startAgain = document.getElementById('startAgain');
 
-
-
+// Start game
 startBtn.addEventListener('click', askForNames);
 function askForNames() {
-  player1 = prompt('Enter the name of the first player');
-  player2 = prompt('Enter the name of the second player');
+  player1NameValue = prompt('Enter the name of the first player');
+  player2NameValue = prompt('Enter the name of the second player');
   displayGame();
 }
 
+// Display game
 function displayGame() {
   startBtn.classList.add('d-none');
   players.classList.remove('d-none');
+  scoreboard.classList.remove('d-none');
 
-  player1Name.innerHTML = player1;
-  player2Name.innerHTML = player2;
+  player1Name.innerHTML = player1NameValue;
+  player2Name.innerHTML = player2NameValue;
+
   player1Btn.addEventListener('click', player1Roll);
   player2Btn.addEventListener('click', player2Roll);
 }
 
-
-
-
-startAgain.addEventListener('click', clearInputs);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function clearInputs() {
-  rollingCounter = 1;
-  // player1Name.innerHTML = "Player1";
-  // player2Name.innerHTML = "Player2";
-  player1Current.innerHTML = '0';
-  player2Current.innerHTML = '0';
-  player1Score.innerHTML = '0';
-  player2Score.innerHTML = '0';
-  player1Btn.removeAttribute('disabled');
-  player2Btn.removeAttribute('disabled');
-  player1Place.style.background = 'none';
-  player2Place.style.background = 'none';
-  startAgain.style.display = 'none';
-  player2TotalScore = 0;
-  player1TotalScore = 0;
-  circleRound.innerHTML = '1';
-}
-
+// Player 1 roll
 function player1Roll() {
   rollingCounter += 0.5;
-
   this.setAttribute('disabled', 'disabled');
   player2Btn.removeAttribute('disabled');
   var rand = Math.floor(Math.random() * 6 + 1);
@@ -113,6 +81,7 @@ function player1Roll() {
   }
 }
 
+// Player 2 roll
 function player2Roll() {
   rollingCounter += 0.5;
   this.setAttribute('disabled', 'disabled');
@@ -128,16 +97,68 @@ function player2Roll() {
   }
 }
 
+// Game over
 function gameOver() {
   player1Btn.setAttribute('disabled', 'disabled');
   player2Btn.setAttribute('disabled', 'disabled');
-  startAgain.style.display = 'block';
+
+  startAgain.classList.remove('d-none');
+
   if (player1TotalScore > player2TotalScore) {
-    player1Place.style.background = '#5cb85c';
+    player1Place.style.background = 'green';
+    player2Place.style.background = 'red';
+    player1Btn.innerHTML = 'Won!';
+    player2Btn.innerHTML = 'Lost!';
+    player2Btn.classList.remove('btn-success');
+    player2Btn.classList.add('btn-danger');
   } else if (player1TotalScore < player2TotalScore) {
-    player2Place.style.background = '#5cb85c';
+    player1Place.style.background = 'red';
+    player2Place.style.background = 'green';
+    player1Btn.innerHTML = 'Lost!';
+    player1Btn.classList.remove('btn-success');
+    player1Btn.classList.add('btn-danger');
+    player2Btn.innerHTML = 'Won!';
   } else {
-    player1Place.style.background = '#c9302c';
-    player2Place.style.background = '#c9302c';
+    player1Place.style.background = 'orange';
+    player2Place.style.background = 'orange';
+    player2Place.style.background = 'red';
+    player1Btn.innerHTML = 'Draw!';
+    player2Btn.innerHTML = 'Draw!';
   }
+}
+
+// Start again
+startAgain.addEventListener('click', clearInputs);
+function clearInputs() {
+  rollingCounter = 1;
+
+  player1Current.innerHTML = '0';
+  player2Current.innerHTML = '0';
+
+  player1Score.innerHTML = '0';
+  player2Score.innerHTML = '0';
+
+  player1Btn.removeAttribute('disabled');
+  player2Btn.removeAttribute('disabled');
+
+  player1Place.style.background = 'none';
+  player2Place.style.background = 'none';
+
+  player1Btn.innerHTML = 'Throw the dice';
+  player2Btn.innerHTML = 'Throw the dice';
+
+  if (player1Btn.classList.contains('btn-danger')) {
+    player1Btn.classList.remove('btn-danger');
+    player1Btn.classList.add('btn-success');
+  } else {
+    player2Btn.classList.remove('btn-danger');
+    player2Btn.classList.add('btn-success');
+  }
+
+  startAgain.classList.add('d-none');
+
+  player2TotalScore = 0;
+  player1TotalScore = 0;
+
+  circleRound.innerHTML = '1';
 }

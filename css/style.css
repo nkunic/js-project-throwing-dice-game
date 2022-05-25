@@ -20,11 +20,6 @@
   font-size: 1.25rem;
 }
 
-.scoreboard {
-  height: 25rem;
-  border-bottom: 1px solid gray;
-}
-
 #players {
   height: 100%;
 }
@@ -37,15 +32,19 @@
   font-size: 3.5rem;
 }
 
+.scoreboard {
+  border-bottom: 1px solid gray;
+}
+
 [disabled] {
   cursor: no-drop;
 }
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }

@@ -10,7 +10,14 @@
       <div class="col-md-8 text-center">
         <div
           id="wrapp"
-          class="d-flex align-items-center justify-content-center my-5"
+          class="
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+            mt-5
+            mb-4
+          "
         >
           <button id="startBtn" class="btn btn-lg btn-primary">
             Start game
@@ -27,6 +34,14 @@
           >
             <span class="circle-label">Round </span>
             <span class="circle-round ms-1">1</span>
+          </div>
+
+          <div class="scoreboard scoreboard pt-4 w-100 d-none">
+            <h1>
+              Total score
+              <span id="player1Score">0</span> :
+              <span id="player2Score">0</span>
+            </h1>
           </div>
 
           <div id="players" class="d-flex flex-row text-center w-100 d-none">
@@ -66,19 +81,11 @@
               </button>
             </div>
           </div>
-
-          <div class="scoreboard d-none">
-            <h1>
-              Total score
-              <span id="player1Score">0</span> :
-              <span id="player2Score">0</span>
-            </h1>
-          </div>
-
-          <button id="startAgain" class="btn btn-lg btn-warning d-none">
-            Start again
-          </button>
         </div>
+
+        <button id="startAgain" class="btn btn-lg btn-warning mt-4 mb-5 d-none">
+          Start again
+        </button>
       </div>
     </div>
   </div>
